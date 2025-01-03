@@ -1,7 +1,6 @@
 const defaults = {
   mode: "ready",
   score: 0,
-  bestScore: Number(localStorage.getItem("bestScore") ?? 0),
   groundSpeed: 0.1,
   initialPosition: [50, 90],
   gravity: 0.0008,

@@ -68,6 +68,7 @@ function update() {
 }
 
 document.addEventListener("pointerdown", tap);
+params.bestScore = Number(localStorage.getItem("bestScore") ?? 0);
 
 animate(clock => {
   for (const layer of layers) {
