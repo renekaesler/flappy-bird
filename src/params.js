@@ -6,7 +6,7 @@ const defaults = {
   gravity: 0.0008,
   thrust: 0.28,
   distance: 200,
-  gap: 90,
+  gap: 110,
 };
 
 export default {
