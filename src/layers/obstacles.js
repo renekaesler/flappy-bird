@@ -5,7 +5,8 @@ import { vec } from "#utils/math";
 import context from "../context.js";
 import params from "../params.js";
 
-const img = await load(Image, "img/pipe.png");
+const img = new Image();
+img.src = "img/pipe.png";
 
 const sprite = prerender(async ctx => {
   const img = await load(Image, "img/pipe.png");
