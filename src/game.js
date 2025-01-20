@@ -60,7 +60,6 @@ function update() {
     obstacle.passed = true;
     play(sounds.score);
     ++params.score;
-    params.groundSpeed *= 1.02;
   } else if (obstacle?.hit?.(bird) || ground.hit(bird)) {
     bird.crash();
     over();

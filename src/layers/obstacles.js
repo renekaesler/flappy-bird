@@ -5,6 +5,8 @@ import { vec } from "#utils/math";
 import context from "../context.js";
 import params from "../params.js";
 
+const img = await load(Image, "img/pipe.png");
+
 const sprite = prerender(async ctx => {
   const img = await load(Image, "img/pipe.png");
 
@@ -88,11 +90,26 @@ export default {
 
   draw() {
     for (const { position, width } of obstacles) {
-      context.drawImage(
-        sprite,
-        position[0] - width / 2,
-        position[1] - sprite.height / 2
-      );
+      // Render Prerendered Pipes
+
+      // context.drawImage(
+      //   sprite,
+      //   position[0] - width / 2,
+      //   position[1] - sprite.height / 2
+      // );
+
+      // Rerender pipe every time again
+
+      context.save();
+      context.translate(...position);
+
+      const halfGap = params.gap / 2;
+      const negHalfWidth = -width / 2;
+
+      context.drawImage(img, negHalfWidth, halfGap);
+      context.scale(1, -1);
+      context.drawImage(img, negHalfWidth, halfGap);
+      context.restore();
     }
   },
 };

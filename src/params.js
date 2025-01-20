@@ -1,3 +1,7 @@
+import GUI from "lil-gui";
+
+const gui = new GUI();
+
 const defaults = {
   mode: "ready",
   score: 0,
@@ -9,9 +13,39 @@ const defaults = {
   gap: 110,
 };
 
-export default {
+const params = {
   ...defaults,
   reset() {
     Object.assign(this, defaults);
   },
 };
+
+gui
+  .add(params, "gap", 50, 250)
+  .name("Auftrieb")
+  .onChange(gap => {
+    Object.assign(defaults, { gap });
+  });
+
+gui
+  .add(params, "thrust", 0.05, 0.5)
+  .name("Auftrieb")
+  .onChange(thrust => {
+    Object.assign(defaults, { thrust });
+  });
+
+gui
+  .add(params, "gravity", 0.0004, 0.002)
+  .name("Gravitation")
+  .onChange(gravity => {
+    Object.assign(defaults, { gravity });
+  });
+
+gui
+  .add(params, "groundSpeed", 0, 1)
+  .name("Geschwindigkeit")
+  .onChange(groundSpeed => {
+    Object.assign(defaults, { groundSpeed });
+  });
+
+export default params;
