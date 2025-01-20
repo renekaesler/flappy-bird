@@ -32,7 +32,9 @@ function reset() {
   obstacles.clear();
 }
 
-function tap() {
+function tap(e) {
+  if (e.target.closest(".lil-gui")) return;
+
   switch (params.mode) {
     case "ready":
       start();

@@ -22,7 +22,7 @@ const params = {
 
 gui
   .add(params, "gap", 50, 250)
-  .name("Auftrieb")
+  .name("Abstand")
   .onChange(gap => {
     Object.assign(defaults, { gap });
   });
@@ -47,5 +47,7 @@ gui
   .onChange(groundSpeed => {
     Object.assign(defaults, { groundSpeed });
   });
+
+gui.close();
 
 export default params;
