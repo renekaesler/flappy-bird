@@ -1,5 +1,6 @@
+import { loadSound, playSound } from "#utils/audio";
 import { snapshot } from "#utils/graphics";
-import { loadSync, play } from "#utils/media";
+import { loadSync } from "#utils/media";
 import { clamp } from "#utils/math";
 
 import context from "../context.js";
@@ -9,12 +10,10 @@ const WEIGHTLESS = "weightless";
 const HEAVY = "heavy";
 const DEAD = "dead";
 
-const sounds = {
-  fall: loadSync(Audio, "sfx/fall.wav"),
-  rise: loadSync(Audio, "sfx/rise.wav"),
-  crash: loadSync(Audio, "sfx/crash.wav"),
-  die: loadSync(Audio, "sfx/die.wav"),
-};
+loadSound("fall", "sfx/fall.wav");
+loadSound("rise", "sfx/rise.wav");
+loadSound("crash", "sfx/crash.wav");
+loadSound("die", "sfx/die.wav");
 
 const sprites = {
   dead: loadSync(Image, "img/bird-dead.png"),
@@ -43,24 +42,24 @@ export default {
 
   fall() {
     this.mode = HEAVY;
-    play(sounds.fall);
+    playSound("fall");
   },
 
   rise() {
     if (params.mode !== "running") return;
 
     this.speed = -params.thrust;
-    play(sounds.rise);
+    playSound("rise");
   },
 
   crash() {
     this.speed = -0.1;
-    play(sounds.crash);
+    playSound("crash");
   },
 
   die() {
     this.mode = DEAD;
-    play(sounds.die);
+    playSound("die");
   },
 
   passed(x) {

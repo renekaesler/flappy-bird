@@ -13,8 +13,3 @@ export function load(Media, src) {
     media.src = src;
   });
 }
-
-export function play(sound) {
-  sound.currentTime = 0;
-  sound.play();
-}

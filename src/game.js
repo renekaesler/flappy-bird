@@ -1,5 +1,6 @@
+import { loadSound, playSound, unlockAudio } from "#utils/audio";
 import { animate } from "#utils/graphics";
-import { loadSync, play } from "#utils/media";
+import { loadSync } from "#utils/media";
 
 import background from "./layers/background.js";
 import bird from "./layers/bird.js";
@@ -10,13 +11,12 @@ import params from "./params.js";
 
 const layers = [background, obstacles, ground, bird, prompt];
 
-const sounds = {
-  score: loadSync(Audio, "sfx/score.wav"),
-};
+loadSound("score", "sfx/score.wav");
 
 function start() {
   params.mode = "running";
 
+  unlockAudio();
   bird.fall();
 }
 
@@ -60,7 +60,7 @@ function update() {
 
   if (obstacle && bird.passed(obstacle.xMax)) {
     obstacle.passed = true;
-    play(sounds.score);
+    playSound("score");
     ++params.score;
   } else if (obstacle?.hit?.(bird) || ground.hit(bird)) {
     bird.crash();
